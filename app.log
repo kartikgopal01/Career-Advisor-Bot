@@ -1,0 +1,212 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 104-828-638
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:06] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:06] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:06] "GET /static/css/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:06] "GET /static/js/auth.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:37] "[35m[1mPOST /signup HTTP/1.1[0m" 201 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:39] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:39] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:39] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:47] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:47] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:47] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:47] "GET /static/js/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:17:58] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:18:00] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:18:01] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:18:01] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:18:01] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:18:01] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:18:01] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:18:11] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:18:11] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:18:11] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:18:11] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: hi
+INFO:__main__:Generating response for user input
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Sending prompt to Gemini: ["You are an AI assistant specializing in engineering careers and skills. Your role is to provide comprehensive and accurate information about various engineering fields, career paths, required skills, job prospects, and skill development. Focus on delivering concise, relevant, and up-to-date responses tailored to the user's specific query. Include information about both technical and soft skills relevant to engineering careers. If a query is outside the scope of engineering careers or skills, politely redirect the conversation back to these topics. For salary expectations, provide ranges based on recent industry data, specifying the country (default to India unless otherwise specified). Suggest resources for skill development when appropriate.", 'User: hi', 'Assistant: ']
+INFO:__main__:Received response from Gemini: Hello! I'm here to help you with any questions you may have about engineering careers and skills. Feel free to ask me anything about different engineering fields, career paths, required skills, job prospects, or skill development. I'll do my best to provide you with concise, relevant, and up-to-date information.
+INFO:__main__:Gemini response: Hello! I'm here to help you with any questions you may have about engineering careers and skills. Feel free to ask me anything about different engineering fields, career paths, required skills, job prospects, or skill development. I'll do my best to provide you with concise, relevant, and up-to-date information.
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:18:40] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:21:40] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:21:41] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:21:41] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:21:47] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:21:47] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\karti\\Desktop\\project-root\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 104-828-638
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 104-828-638
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:26:04] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:26:05] "GET /static/css/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:26:05] "GET /static/js/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:26:31] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:26:32] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:26:32] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:26:32] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:26:32] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 15:26:32] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 904-587-750
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:17:48] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:17:49] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:17:49] "GET /static/css/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:17:49] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:17:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:18:00] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:19:10] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:19:26] "[35m[1mPOST /signup HTTP/1.1[0m" 201 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:19:29] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:19:29] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:19:29] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:19:40] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:19:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:19:40] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:19:40] "GET /static/js/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:19:54] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:20:23] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:20:37] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:20:37] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:20:37] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: hey
+INFO:__main__:Generating response for user input
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Sending prompt to Gemini: ["You are an AI assistant specializing in engineering careers and skills. Your role is to provide comprehensive and accurate information about various engineering fields, career paths, required skills, job prospects, and skill development. Focus on delivering concise, relevant, and up-to-date responses tailored to the user's specific query. Include information about both technical and soft skills relevant to engineering careers. If a query is outside the scope of engineering careers or skills, politely redirect the conversation back to these topics. For salary expectations, provide ranges based on recent industry data, specifying the country (default to India unless otherwise specified). Suggest resources for skill development when appropriate.", 'User: hey', 'Assistant: ']
+INFO:__main__:Received response from Gemini: Hello! I'm here to assist you with any questions you have about engineering careers and skills. Feel free to ask me about different engineering fields, career paths, required skills, job prospects, or skill development. I'll provide you with concise and accurate information to help you make informed decisions about your engineering career.
+INFO:__main__:Gemini response: Hello! I'm here to assist you with any questions you have about engineering careers and skills. Feel free to ask me about different engineering fields, career paths, required skills, job prospects, or skill development. I'll provide you with concise and accurate information to help you make informed decisions about your engineering career.
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:20:48] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:22:40] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: what can i do after engineering
+INFO:__main__:Generating response for user input
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Sending prompt to Gemini: ["You are an AI assistant specializing in engineering careers and skills. Your role is to provide comprehensive and accurate information about various engineering fields, career paths, required skills, job prospects, and skill development. Focus on delivering concise, relevant, and up-to-date responses tailored to the user's specific query. Include information about both technical and soft skills relevant to engineering careers. If a query is outside the scope of engineering careers or skills, politely redirect the conversation back to these topics. For salary expectations, provide ranges based on recent industry data, specifying the country (default to India unless otherwise specified). Suggest resources for skill development when appropriate.", 'User: hey', "Assistant: Hello! I'm here to assist you with any questions you have about engineering careers and skills. Feel free to ask me about different engineering fields, career paths, required skills, job prospects, or skill development. I'll provide you with concise and accurate information to help you make informed decisions about your engineering career.", 'User: what can i do after engineering', 'Assistant: ']
+INFO:__main__:Received response from Gemini: After completing an engineering degree, you have several career options to choose from. Here are some common paths:
+
+**1. Core Engineering Roles:**
+
+* Design Engineer
+* Development Engineer
+* Research Engineer
+* Project Engineer
+* Production Engineer
+
+**2. Specialized Engineering Roles:**
+
+* Aerospace Engineer
+* Biomedical Engineer
+* Chemical Engineer
+* Civil Engineer
+* Computer Engineer
+* Electrical Engineer
+* Electronics Engineer
+* Environmental Engineer
+* Industrial Engineer
+* Mechanical Engineer
+
+**3. Management and Leadership Roles:**
+
+* Engineering Manager
+* Project Manager
+* Operations Manager
+* Technical Director
+
+**4. Entrepreneurship:**
+
+* Start your own engineering firm
+* Develop and market new products or services
+
+**5. Other Career Options:**
+
+* Patent Attorney
+* Technical Writer
+* Engineering Educator
+* Sales Engineer
+
+The best career path for you will depend on your interests, skills, and career goals. It's important to research different options and network with professionals in the field to make an informed decision.
+INFO:__main__:Gemini response: After completing an engineering degree, you have several career options to choose from. Here are some common paths:
+
+**1. Core Engineering Roles:**
+
+* Design Engineer
+* Development Engineer
+* Research Engineer
+* Project Engineer
+* Production Engineer
+
+**2. Specialized Engineering Roles:**
+
+* Aerospace Engineer
+* Biomedical Engineer
+* Chemical Engineer
+* Civil Engineer
+* Computer Engineer
+* Electrical Engineer
+* Electronics Engineer
+* Environmental Engineer
+* Industrial Engineer
+* Mechanical Engineer
+
+**3. Management and Leadership Roles:**
+
+* Engineering Manager
+* Project Manager
+* Operations Manager
+* Technical Director
+
+**4. Entrepreneurship:**
+
+* Start your own engineering firm
+* Develop and market new products or services
+
+**5. Other Career Options:**
+
+* Patent Attorney
+* Technical Writer
+* Engineering Educator
+* Sales Engineer
+
+The best career path for you will depend on your interests, skills, and career goals. It's important to research different options and network with professionals in the field to make an informed decision.
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2024 16:24:04] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 904-587-750
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 104-828-638
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:08] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:08] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:08] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:19] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:35] "[35m[1mPOST /signup HTTP/1.1[0m" 201 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:37] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:37] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:51] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:51] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:51] "GET /static/css/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:51] "GET /static/js/script.js HTTP/1.1" 200 -

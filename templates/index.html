@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerWise - AI-Powered Engineering Career Advisor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="dark-mode">
+    <div id="loading" class="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <div id="content">
+        <header class="header">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="https://img.icons8.com/nolan/64/artificial-intelligence.png" alt="CareerWise Logo">
+                    <span>CareerWise</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#home" class="active">Home</a>
+                    <a href="#careers">Careers</a>
+                    <a href="#" id="profile-link">Profile</a>
+                    <a href="#" id="logout-link">Logout</a>
+                    <button id="theme-toggle" class="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section id="home" class="hero-section">
+                <div class="hero-content">
+                    <h1>Shape Your Engineering Future</h1>
+                    <p>Get personalized career guidance powered by AI</p>
+                    <div class="hero-buttons">
+                        <a href="#careers" class="primary-button">Explore Careers</a>
+                        <button id="chat-button" class="secondary-button">Start Chat</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://img.icons8.com/nolan/512/artificial-intelligence.png" alt="AI Career Guidance">
+                </div>
+            </section>
+
+            <section id="careers" class="careers-section">
+                <h2>Popular Engineering Careers</h2>
+                <div class="careers-grid">
+                    <div class="career-card">
+                        <div class="career-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI Engineer</h3>
+                        <p>Design and develop intelligent systems and machines</p>
+                        <ul class="career-skills">
+                            <li>Machine Learning</li>
+                            <li>Python</li>
+                            <li>Deep Learning</li>
+                        </ul>
+                        <button class="learn-more">Learn More</button>
+                    </div>
+
+                    <div class="career-card">
+                        <div class="career-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Data Scientist</h3>
+                        <p>Analyze and interpret complex data sets</p>
+                        <ul class="career-skills">
+                            <li>Statistics</li>
+                            <li>Python</li>
+                            <li>SQL</li>
+                        </ul>
+                        <button class="learn-more">Learn More</button>
+                    </div>
+
+                    <div class="career-card">
+                        <div class="career-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Software Engineer</h3>
+                        <p>Develop and maintain software applications</p>
+                        <ul class="career-skills">
+                            <li>JavaScript</li>
+                            <li>Python</li>
+                            <li>Java</li>
+                        </ul>
+                        <button class="learn-more">Learn More</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="chat-widget" class="chat-widget">
+            <div class="chat-header">
+                <h3>AI Career Advisor</h3>
+                <button id="close-chat" class="close-button">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+                <div class="message ai-message">
+                    Hello! I'm your AI Career Advisor. How can I help you today?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button id="send-message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="profile-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Profile</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="profile-info">
+                        <img src="https://img.icons8.com/nolan/64/user-default.png" alt="Profile Picture">
+                        <h3 id="profile-username">Username</h3>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-value">5</span>
+                            <span class="stat-label">Chats</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">3</span>
+                            <span class="stat-label">Careers Explored</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

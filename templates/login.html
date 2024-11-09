@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AI-Powered Engineering Career Advisor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0% { transform: translatey(0px); }
+            50% { transform: translatey(-20px); }
+            100% { transform: translatey(0px); }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        .auth-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            overflow: hidden;
+            width: 350px;
+            max-width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .auth-form {
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        h2 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.7rem;
+            border: none;
+            border-bottom: 2px solid rgba(255,255,255,0.5);
+            background-color: transparent;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        input:focus {
+            outline: none;
+            border-bottom-color: #ffffff;
+        }
+
+        .input-group i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.7);
+            transition: all 0.3s ease;
+        }
+
+        input:focus + i {
+            color: #ffffff;
+        }
+
+        button {
+            background-color: rgba(255,255,255,0.2);
+            color: #ffffff;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 4px rgba(0,0,0,0.1);
+        }
+
+        p {
+            text-align: center;
+            margin-top: 1rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            text-shadow: 0 0 8px rgba(255,255,255,0.5);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container floating">
+        <div id="login-form" class="auth-form fade-in">
+            <h2>Welcome Back</h2>
+            <form>
+                <div class="input-group">
+                    <input type="text" id="login-username" placeholder="Username" required aria-label="Username">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="login-password" placeholder="Password" required aria-label="Password">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
+        </div>
+        <div id="signup-form" class="auth-form hidden">
+            <h2>Join Us</h2>
+            <form>
+                <div class="input-group">
+                    <input type="text" id="signup-username" placeholder="Choose Username" required aria-label="Choose Username">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="signup-password" placeholder="Create Password" required aria-label="Create Password">
+                    <i class="fas fa-key"></i>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const showSignup = document.getElementById('show-signup');
+            const showLogin = document.getElementById('show-login');
+
+            showSignup.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginForm.classList.remove('fade-in');
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+                signupForm.classList.add('fade-in');
+            });
+
+            showLogin.addEventListener('click', (e) => {
+                e.preventDefault();
+                signupForm.classList.remove('fade-in');
+                signupForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+                loginForm.classList.add('fade-in');
+            });
+        });
+    </script>
+</body>
+</html>
