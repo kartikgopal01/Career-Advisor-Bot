@@ -210,3 +210,31 @@ INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:51] "POST /login HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:51] "GET / HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:51] "GET /static/css/styles.css HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:15:51] "GET /static/js/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:21:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:21:43] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:21:43] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:21:51] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: hi
+INFO:__main__:Generating response for user input
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Sending prompt to Gemini: ["You are an AI assistant specializing in engineering careers and skills. Your role is to provide comprehensive and accurate information about various engineering fields, career paths, required skills, job prospects, and skill development. Focus on delivering concise, relevant, and up-to-date responses tailored to the user's specific query. Include information about both technical and soft skills relevant to engineering careers. If a query is outside the scope of engineering careers or skills, politely redirect the conversation back to these topics. For salary expectations, provide ranges based on recent industry data, specifying the country (default to India unless otherwise specified). Suggest resources for skill development when appropriate.", 'User: hi', 'Assistant: ']
+INFO:__main__:Received response from Gemini: Hello! I'm here to help you with any questions you have about engineering careers and skills. Just ask, and I'll do my best to provide you with comprehensive and accurate information.
+INFO:__main__:Gemini response: Hello! I'm here to help you with any questions you have about engineering careers and skills. Just ask, and I'll do my best to provide you with comprehensive and accurate information.
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:22:01] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:22:53] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:22:57] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:24:05] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:24:07] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:24:08] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:24:08] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:24:10] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:24:37] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:24:44] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:24:44] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:24:44] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:24:44] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:26:20] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:26:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:26:20] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Nov/2024 08:26:20] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
