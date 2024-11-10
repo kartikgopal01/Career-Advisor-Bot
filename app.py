@@ -136,7 +136,11 @@ def signup():
         return jsonify({"error": "Username already exists"}), 400
     
     hashed_password = generate_password_hash(password)
-    users_collection.insert_one({"username": username, "password": hashed_password})
+    users_collection.insert_one({
+        "username": username, 
+        "password": hashed_password,
+        "created_at": datetime.now()
+    })
     
     return jsonify({"message": "User created successfully"}), 201
 
@@ -183,6 +187,38 @@ def chat(current_user):
     except Exception as e:
         logger.error(f"Error in chat route: {str(e)}")
         return jsonify({"error": "An internal server error occurred", "details": str(e)}), 500
+# Add these routes to app.py after the existing routes
+
+@app.route('/api/profile', methods=['GET'])
+@token_required
+def get_profile(current_user):
+    try:
+        # Get user's chat history
+        user_chats = chat_history_collection.find(
+            {"user_id": current_user['_id']},
+            {"user_message": 1, "assistant_response": 1, "timestamp": 1}
+        ).sort("timestamp", -1).limit(10)  # Get last 10 chats
+        
+        # Get unique careers explored from chat history
+        careers_explored = chat_history_collection.distinct(
+            "career_mentioned",
+            {"user_id": current_user['_id']}
+        )
+        
+        profile_data = {
+            "username": current_user['username'],
+            "chat_history": list(user_chats),
+            "careers_explored": careers_explored if careers_explored else [],
+            "total_chats": chat_history_collection.count_documents({"user_id": current_user['_id']}),
+            "join_date": current_user.get('created_at', datetime.now()).strftime("%Y-%m-%d")
+        }
+        
+        return jsonify(profile_data), 200
+    except Exception as e:
+        logger.error(f"Error fetching profile data: {str(e)}")
+        return jsonify({"error": "Failed to fetch profile data"}), 500
+
+
 
 @app.route('/reset', methods=['POST'])
 def reset_conversation():

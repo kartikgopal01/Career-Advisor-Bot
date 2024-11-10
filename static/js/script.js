@@ -55,17 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Theme toggle
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        const icon = themeToggle.querySelector('i');
-        if (document.body.classList.contains('light-mode')) {
-            icon.className = 'fas fa-sun';
-        } else {
-            icon.className = 'fas fa-moon';
-        }
-    });
-
     // Chat functionality
     chatButton.addEventListener('click', () => {
         chatWidget.style.display = 'flex';
@@ -177,3 +166,196 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
 });
+// Modified script.js profile-related code
+async function fetchProfile() {
+    try {
+        const response = await fetch('/api/profile', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'  // Important for cookies
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Update profile modal with data
+        document.getElementById('profile-username').textContent = data.username;
+        document.getElementById('profile-join-date').textContent = `Member since: ${data.join_date}`;
+        document.getElementById('total-chats').textContent = data.total_chats;
+        document.getElementById('careers-explored-count').textContent = data.careers_explored.length;
+        
+        // Update careers explored list
+        const careersList = document.getElementById('explored-careers-list');
+        careersList.innerHTML = '';
+        data.careers_explored.forEach(career => {
+            const li = document.createElement('li');
+            li.textContent = career;
+            careersList.appendChild(li);
+        });
+        
+        // Update chat history
+        const chatHistoryList = document.getElementById('chat-history-list');
+        chatHistoryList.innerHTML = '';
+        data.chat_history.forEach(chat => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div class="chat-history-item">
+                    <span class="timestamp">${new Date(chat.timestamp).toLocaleString()}</span>
+                    <div class="message-pair">
+                        <div class="user-message">${chat.user_message}</div>
+                        <div class="ai-message">${chat.assistant_response}</div>
+                    </div>
+                </div>
+            `;
+            chatHistoryList.appendChild(li);
+        });
+        
+        // Show the modal
+        const profileModal = document.getElementById('profile-modal');
+        profileModal.style.display = 'block';
+        
+    } catch (error) {
+        console.error('Error fetching profile:', error);
+        alert('Failed to load profile. Please try again.');
+    }
+}
+
+// Add event listener for closing the profile modal
+document.querySelector('.close-modal').addEventListener('click', () => {
+    document.getElementById('profile-modal').style.display = 'none';
+});
+
+// Close modal when clicking outside
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('profile-modal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+// Add this to your existing JavaScript file
+
+// Load particles.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Load particles.js script
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js';
+    script.onload = initParticles;
+    document.head.appendChild(script);
+});
+
+function initParticles() {
+    particlesJS('particles-js', {
+        particles: {
+            number: {
+                value: 80,
+                density: {
+                    enable: true,
+                    value_area: 800
+                }
+            },
+            color: {
+                value: '#00bcd4'
+            },
+            shape: {
+                type: 'circle'
+            },
+            opacity: {
+                value: 0.5,
+                random: false
+            },
+            size: {
+                value: 3,
+                random: true
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#00bcd4',
+                opacity: 0.4,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 6,
+                direction: 'none',
+                random: false,
+                straight: false,
+                out_mode: 'out',
+                bounce: false
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: 'repulse'
+                },
+                resize: true
+            }
+        },
+        retina_detect: true
+    });
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+  
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+  
+    themeToggle.addEventListener('click', () => {
+      const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+      setTheme(newTheme);
+    });
+  
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark-mode');
+      } else {
+        body.classList.remove('dark-mode');
+      }
+      localStorage.setItem('theme', theme);
+      updateThemeIcon();
+    }
+  
+    function updateThemeIcon() {
+      const icon = themeToggle.querySelector('i');
+      if (body.classList.contains('dark-mode')) {
+        icon.classList.replace('fa-sun', 'fa-moon');
+      } else {
+        icon.classList.replace('fa-moon', 'fa-sun');
+      }
+    }
+  
+    // Animate career cards on scroll
+    const careerCards = document.querySelectorAll('.career-card');
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+  
+    careerCards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(card);
+    });
+  });
+  

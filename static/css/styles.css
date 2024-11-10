@@ -11,6 +11,103 @@
     --transition-speed: 0.3s;
 }
 
+/* ... (previous CSS remains the same until careers section) ... */
+
+
+.careers-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.careers-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.careers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.career-card {
+    background-color: var(--surface-dark);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: transform var(--transition-speed);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 380px;
+}
+
+.career-card:hover {
+    transform: translateY(-10px);
+}
+
+.career-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.career-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.career-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    min-height: 48px;
+}
+
+.career-skills {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    min-height: 64px;
+}
+
+.career-skills li {
+    background-color: rgba(0, 188, 212, 0.1);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
+
+.learn-more {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    margin-top: auto;
+}
+
+.learn-more:hover {
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+}
+
+/* ... (rest of the CSS remains the same) ... */
+
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +115,7 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: "PT Serif", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: var(--background-dark);
     color: var(--text-primary);
     line-height: 1.6;
@@ -137,8 +234,13 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 6rem 2rem 2rem;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
+    user-select: none; /* Prevents text selection */
+    -webkit-user-select: none; /* For Safari */
+    -ms-user-select: none; /* For IE and Edge */
+    user-select: none; /* Prevents text selection */
+    outline: none; 
 }
 
 .hero-content {
@@ -216,66 +318,6 @@ body {
     gap: 2rem;
 }
 
-.career-card {
-    background-color: var(--surface-dark);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: transform var(--transition-speed);
-    cursor: pointer;
-}
-
-.career-card:hover {
-    transform: translateY(-10px);
-}
-
-.career-icon {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-}
-
-.career-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
-
-.career-card p {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-}
-
-.career-skills {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.career-skills li {
-    background-color: rgba(0, 188, 212, 0.1);
-    color: var(--primary-color);
-    padding: 0.25rem 0.75rem;
-    border-radius: 16px;
-    font-size: 0.875rem;
-}
-
-.learn-more {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: transparent;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all var(--transition-speed);
-}
-
-.learn-more:hover {
-    background-color: var(--primary-color);
-    color: var(--background-dark);
-}
 
 .chat-widget {
     position: fixed;
@@ -481,4 +523,310 @@ body {
         right: 0;
         border-radius: 0;
     }
+}
+/* Add these styles to your existing CSS */
+
+/* About Section Styles */
+.about-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.about-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.team-member {
+    background-color: var(--surface-dark);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform var(--transition-speed);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.member-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary-color);
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-member h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.team-member .role {
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.team-member .bio {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    transition: color var(--transition-speed);
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Particle Animation Styles */
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-section {
+    position: relative;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .team-container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+  
+
+  
+  .dark-mode {
+    /* Keep the existing dark mode colors */
+    --primary-color: #2a7fff;
+    --secondary-color: #27ae60;
+    --text-color: #f4f4f4;
+    --background-color: #0b1a30;
+    --card-background: #172a45;
+    --button-hover: #0b1a30;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .navbar {
+    background-color: var(--background-color);
+    box-shadow: var(--card-shadow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .career-card {
+    background-color: var(--card-background);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .career-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .primary-button {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .primary-button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+  }
+  
+  .secondary-button {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .secondary-button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+  }
+  
+  /* Additional styles for light mode */
+
+  body:not(.dark-mode) .career-icon {
+    color: var(--primary-color);
+  }
+  
+  body:not(.dark-mode) .learn-more {
+    background-color: var(--primary-color);
+    color: #ffffff;
+  }
+  
+  body:not(.dark-mode) .learn-more:hover {
+    background-color: var(--button-hover);
+  }
+  body:not(.dark-mode) .careers-section h2 {
+    color: black;
+  }
+  body:not(.dark-mode) .about-section h2 {
+    color: black;
+  }
+  body:not(.dark-mode) .career-card h3 {
+    color: #00bcd4;
+  }
+  
+  /* Import modern, beautiful fonts */
+@import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* Base Typography */
+body {
+    font-family: "Doto", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Doto", sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+/* Hero Section Typography */
+.hero-content h1 {
+    font-family: "PT Serif", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.hero-content p {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+/* Career Cards Typography */
+.career-card h3 {
+    font-family: "Faculty Glyphic", sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.career-card p {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 400;
+}
+
+/* Career Skills */
+.career-skills li {
+    font-family: "Faculty Glyphic", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+/* Navigation */
+.nav-links a {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.logo {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+/* Team Section */
+.team-member h3 {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.team-member .role {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.team-member .bio {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 400;
+}
+
+/* Chat Widget */
+.chat-messages .message {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 400;
+}
+
+/* Buttons */
+.primary-button,
+.secondary-button,
+.learn-more {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* Modal Content */
+.modal-content {
+    font-family: 'Cabinet Grotesk', sans-serif;
+}
+
+.modal-header h2 {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+}
+
+/* Ensure proper font loading */
+.fonts-loaded body {
+    opacity: 1;
 }
