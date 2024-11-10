@@ -10,6 +10,9 @@
     --success-color: #69f0ae;
     --transition-speed: 0.3s;
 }
+body{
+    user-select: none !important;
+}
 
 /* ... (previous CSS remains the same until careers section) ... */
 
@@ -712,6 +715,9 @@ body {
   body:not(.dark-mode) .learn-more:hover {
     background-color: var(--button-hover);
   }
+  body:not(.dark-mode){
+    background-color: #d7f0eb;
+  }
   body:not(.dark-mode) .careers-section h2 {
     color: black;
   }
@@ -829,4 +835,13 @@ h1, h2, h3, h4, h5, h6 {
 /* Ensure proper font loading */
 .fonts-loaded body {
     opacity: 1;
+}
+body:not(.dark-mode) .learn-more:hover{
+    color: black;
+}
+body:not(.dark-mode) .primary-button:hover{
+    color: black;
+}
+body:not(.dark-mode) .secondary-button:hover{
+    color: black;
 }

@@ -64,13 +64,50 @@ document.addEventListener('DOMContentLoaded', () => {
         chatWidget.style.display = 'none';
     });
 
-    function appendMessage(sender, message) {
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', `${sender}-message`);
-        messageDiv.textContent = message;
-        chatMessages.appendChild(messageDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+    // Modify the existing appendMessage function to handle formatting
+function appendMessage(sender, message) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', `${sender}-message`);
+    
+    // Format the message content
+    const formattedMessage = formatChatMessage(message);
+    messageDiv.innerHTML = formattedMessage;
+    
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function formatChatMessage(message) {
+    // Replace asterisk-based bullet points with proper HTML list formatting
+    return message.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // Handle bold text
+                 .replace(/\*(.*?)\*/g, '<em>$1</em>')  // Handle italic text
+                 .replace(/^\* (.*?)$/gm, '<li>$1</li>') // Handle bullet points
+                 .replace(/((?:\n<li>.*?<\/li>\n)+)/g, '<ul>$1</ul>') // Wrap lists in ul tags
+                 .replace(/\n/g, '<br>'); // Handle line breaks
+}
+
+// Add CSS to style the formatted messages
+const style = document.createElement('style');
+style.textContent = `
+    .ai-message ul {
+        margin: 5px 0 5px 20px;
+        padding-left: 15px;
     }
+    
+    .ai-message li {
+        margin: 5px 0;
+        list-style-type: disc;
+    }
+    
+    .ai-message strong {
+        font-weight: bold;
+    }
+    
+    .ai-message em {
+        font-style: italic;
+    }
+`;
+document.head.appendChild(style);
 
     sendMessage.addEventListener('click', async () => {
         const message = userInput.value.trim();
