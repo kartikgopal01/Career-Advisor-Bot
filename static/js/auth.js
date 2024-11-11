@@ -3,17 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.getElementById('signup-form');
     const showSignup = document.getElementById('show-signup');
     const showLogin = document.getElementById('show-login');
+    const container = document.querySelector('.container');
 
     showSignup.addEventListener('click', (e) => {
         e.preventDefault();
-        document.querySelector('.auth-form').style.display = 'none';
-        document.querySelectorAll('.auth-form')[1].style.display = 'block';
+        container.classList.add('active');
     });
 
     showLogin.addEventListener('click', (e) => {
         e.preventDefault();
-        document.querySelectorAll('.auth-form')[1].style.display = 'none';
-        document.querySelector('.auth-form').style.display = 'block';
+        container.classList.remove('active');
     });
 
     loginForm.addEventListener('submit', async (e) => {
@@ -35,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 window.location.href = '/';
             } else {
-                alert(data.error);
+                alert(data.error || 'Login failed. Please try again.');
             }
         } catch (error) {
             console.error('Error:', error);
@@ -46,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     signupForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const username = document.getElementById('signup-username').value;
+        const email = document.getElementById('signup-email').value;
         const password = document.getElementById('signup-password').value;
 
         try {
@@ -54,16 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({ username, email, password }),
             });
 
             const data = await response.json();
 
             if (response.ok) {
                 alert('Account created successfully. Please log in.');
-                window.location.href = '/login';
+                container.classList.remove('active');
             } else {
-                alert(data.error);
+                alert(data.error || 'Registration failed. Please try again.');
             }
         } catch (error) {
             console.error('Error:', error);

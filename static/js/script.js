@@ -147,14 +147,49 @@ document.head.appendChild(style);
     profileLink.addEventListener('click', async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('/profile');
-            const data = await response.json();
-            if (response.ok) {
-                document.getElementById('profile-username').textContent = data.username;
-                profileModal.style.display = 'block';
+            const response = await fetch('/api/profile', {
+                credentials: 'include'  // Important for sending cookies
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to fetch profile data');
             }
+            
+            const data = await response.json();
+            
+            // Update profile modal with data
+            document.getElementById('profile-username').textContent = data.username;
+            document.getElementById('profile-join-date').textContent = `Member since: ${data.join_date}`;
+            document.getElementById('total-chats').textContent = data.total_chats;
+            document.getElementById('careers-explored-count').textContent = data.careers_explored.length;
+            
+            // Update explored careers list
+            const careersList = document.getElementById('explored-careers-list');
+            careersList.innerHTML = data.careers_explored
+                .map(career => `<li>${career}</li>`)
+                .join('');
+            
+            // Update chat history
+            const chatHistoryList = document.getElementById('chat-history-list');
+            chatHistoryList.innerHTML = data.chat_history
+                .map(chat => `
+                    <li>
+                        <div class="chat-history-item">
+                            <span class="timestamp">${new Date(chat.timestamp).toLocaleString()}</span>
+                            <div class="message-pair">
+                                <div class="user-message">${chat.user_message}</div>
+                                <div class="ai-message">${chat.assistant_response}</div>
+                            </div>
+                        </div>
+                    </li>
+                `)
+                .join('');
+            
+            // Show the modal
+            profileModal.style.display = 'block';
         } catch (error) {
             console.error('Error:', error);
+            alert('Failed to load profile data');
         }
     });
 

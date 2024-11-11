@@ -243,23 +243,27 @@ def chat(current_user):
 def get_profile(current_user):
     try:
         # Get user's chat history
-        user_chats = chat_history_collection.find(
+        chats = list(chat_history_collection.find(
             {"user_id": current_user['_id']},
-            {"user_message": 1, "assistant_response": 1, "timestamp": 1}
-        ).sort("timestamp", -1).limit(10)  # Get last 10 chats
+            {"user_message": 1, "assistant_response": 1, "timestamp": 1, "_id": 0}
+        ).sort("timestamp", -1).limit(10))
         
-        # Get unique careers explored from chat history
-        careers_explored = chat_history_collection.distinct(
-            "career_mentioned",
-            {"user_id": current_user['_id']}
-        )
+        # Extract career mentions from chat history
+        career_keywords = ['engineer', 'developer', 'scientist', 'architect']
+        careers_explored = set()
+        
+        for chat in chats:
+            message = chat['user_message'].lower()
+            for keyword in career_keywords:
+                if keyword in message:
+                    careers_explored.add(keyword.title())
         
         profile_data = {
             "username": current_user['username'],
-            "chat_history": list(user_chats),
-            "careers_explored": careers_explored if careers_explored else [],
+            "join_date": current_user.get('created_at', datetime.now()).strftime("%Y-%m-%d"),
             "total_chats": chat_history_collection.count_documents({"user_id": current_user['_id']}),
-            "join_date": current_user.get('created_at', datetime.now()).strftime("%Y-%m-%d")
+            "careers_explored": list(careers_explored),
+            "chat_history": chats
         }
         
         return jsonify(profile_data), 200
