@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Developer Roadmap - CareerWise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #ffd54f;
+            --background-color: #121212;
+            --surface-color: #1e1e1e;
+            --on-surface-color: #ffffff;
+            --text-primary: #ffffff;
+            --text-secondary: #b0bec5;
+        }
+
+        .light-theme {
+            --primary-color: #2e7d32;
+            --secondary-color: #ffd54f;
+            --background-color: #f5f5f5;
+            --surface-color: #ffffff;
+            --on-surface-color: #121212;
+            --text-primary: #121212;
+            --text-secondary: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: var(--surface-color);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-switch:hover {
+            transform: scale(1.1);
+        }
+
+        .roadmap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .roadmap-item {
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .roadmap-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .roadmap-item h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .roadmap-item-content {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .roadmap-item.active .roadmap-item-content {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .roadmap-item-content ul {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+
+        .roadmap-item-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .roadmap-item-content li::before {
+            content: "\f0da";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+
+        .progress-bar {
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary-color);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            z-index: -1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes progressAnimation {
+            from {
+                height: 0;
+            }
+            to {
+                height: 100%;
+            }
+        }
+
+        .resources {
+            margin-top: 3rem;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        .resources h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .resource-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .resource-link {
+            background-color: var(--surface-color);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .resource-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .roadmap-item {
+                padding: 1rem;
+            }
+        }
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-switch" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    <div class="floating-shapes">
+        <div class="shape" style="top: 10%; left: 10%; font-size: 40px;">&#9670;</div>
+        <div class="shape" style="top: 30%; right: 20%; font-size: 60px;">&#9635;</div>
+        <div class="shape" style="bottom: 20%; left: 30%; font-size: 50px;">&#9649;</div>
+        <div class="shape" style="top: 50%; right: 10%; font-size: 45px;">&#9733;</div>
+    </div>
+    <div class="container">
+        <header>
+            <h1>Full Stack Developer Roadmap</h1>
+            <p>Your guide to becoming a Full Stack Developer in India</p>
+        </header>
+        <div class="roadmap">
+            <div class="progress-bar"></div>
+            <div class="roadmap-item">
+                <h2>1. Foundation</h2>
+                <div class="roadmap-item-content">
+                    <ul>
+                        <li>Bachelor's degree in Computer Science, IT, or related field</li>
+                        <li>Strong understanding of data structures and algorithms</li>
+                        <li>Proficiency in at least one programming language (e.g., JavaScript, Python, Java)</li>
+                        <li>Basic understanding of computer networks and operating systems</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h2>2. Frontend Development</h2>
+                <div class="roadmap-item-content">
+                    <ul>
+                        <li>HTML5, CSS3, and JavaScript (ES6+)</li>
+                        <li>Responsive web design and CSS frameworks (e.g., Bootstrap, Tailwind)</li>
+                        <li>Modern JavaScript frameworks (React, Angular, or Vue.js)</li>
+                        <li>State management (e.g., Redux, Vuex)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h2>3. Backend Development</h2>
+                <div class="roadmap-item-content">
+                    <ul>
+                        <li>Server-side programming languages (e.g., Node.js, Python, Java, Ruby)</li>
+                        <li>RESTful API design and implementation</li>
+                        <li>Database management (SQL and NoSQL)</li>
+                        <li>Authentication and authorization</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h2>4. Web Development Tools and Version Control</h2>
+                <div class="roadmap-item-content">
+                    <ul>
+                        <li>Version control systems (Git and GitHub)</li>
+                        <li>Package managers (npm, yarn)</li>
+                        <li>Build tools and module bundlers (Webpack, Babel)</li>
+                        <li>Task runners (e.g., Gulp, Grunt)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h2>5. DevOps and Deployment</h2>
+                <div class="roadmap-item-content">
+                    <ul>
+                        <li>Continuous Integration and Continuous Deployment (CI/CD)</li>
+                        <li>Containerization (Docker) and orchestration (Kubernetes)</li>
+                        <li>Cloud platforms (AWS, Azure, or Google Cloud)</li>
+                        <li>Web servers and reverse proxies (Nginx, Apache)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h2>6. API Development and Integration</h2>
+                <div class="roadmap-item-content">
+                    <ul>
+                        <li>RESTful API design principles</li>
+                        <li>GraphQL and Apollo</li>
+                        <li>API testing and documentation</li>
+                        <li>Third-party API integration</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h2>7. Testing and Quality Assurance</h2>
+                <div class="roadmap-item-content">
+                    <ul>
+                        <li>Unit testing (e.g., Jest, Mocha)</li>
+                        <li>Integration and end-to-end testing (e.g., Cypress, Selenium)</li>
+                        <li>Test-Driven Development (TDD)</li>
+                        <li>Performance testing and optimization</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h2>8. Soft Skills and Professional Development</h2>
+                <div class="roadmap-item-content">
+                    <ul>
+                        <li>Effective communication and teamwork</li>
+                        <li>Agile methodologies and project management</li>
+                        <li>Problem-solving and critical thinking</li>
+                        <li>Continuous learning and staying updated with industry trends</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="resources">
+            <h2>Additional Resources</h2>
+            <div class="resource-links">
+                <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" class="resource-link">freeCodeCamp</a>
+                <a href="https://fullstackopen.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Full Stack Open</a>
+                <a href="https://www.theodinproject.com/" target="_blank" rel="noopener noreferrer" class="resource-link">The Odin Project</a>
+                <a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/" target="_blank" rel="noopener noreferrer" class="resource-link">Web Development Bootcamp</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const roadmapItems = document.querySelectorAll('.roadmap-item');
+            const progressBar = document.querySelector('.progress-bar');
+            const themeSwitch = document.querySelector('.theme-switch');
+            const themeIcon = themeSwitch.querySelector('i');
+
+            const animateProgressBar = () => {
+                progressBar.style.animation = `progressAnimation ${roadmapItems.length * 0.5}s ease-out forwards`;
+            };
+
+            const animateRoadmapItems = () => {
+                roadmapItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.animation = `fadeIn 0.5s ease-out ${index * 0.2}s forwards`;
+                    }, index * 200);
+                });
+            };
+
+            const toggleTheme = () => {
+                document.body.classList.toggle('light-theme');
+                if (document.body.classList.contains('light-theme')) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            };
+
+            animateProgressBar();
+            animateRoadmapItems();
+
+            roadmapItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+
+            themeSwitch.addEventListener('click', toggleTheme);
+
+            // Intersection Observer for roadmap items
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            roadmapItems.forEach(item => observer.observe(item));
+        });
+    </script>
+</body>
+</html>

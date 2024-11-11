@@ -7,6 +7,8 @@ import logging
 from pymongo import MongoClient
 from werkzeug.security import generate_password_hash, check_password_hash
 import google.generativeai as genai
+import pandas as pd
+from fuzzywuzzy import fuzz  # Add this for fuzzy string matchingi
 
 app = Flask(__name__)
 CORS(app)
@@ -16,6 +18,7 @@ app.config['SECRET_KEY'] = 'AIzaSyCWJ-9Cux77MKM4viOypRwD5-p60Med_pQ'
 MONGO_URI = 'mongodb://localhost:27017/'
 DB_NAME = 'career_advisor_db'
 GEMINI_API_KEY = "AIzaSyCWJ-9Cux77MKM4viOypRwD5-p60Med_pQ"
+CAREER_DATA_PATH = 'career_data.csv'
 
 # MongoDB setup
 client = MongoClient(MONGO_URI)
@@ -43,6 +46,36 @@ SAFETY_SETTINGS = [
 ]
 
 conversation_history = []
+def load_career_data():
+    try:
+        return pd.read_csv(CAREER_DATA_PATH)
+    except Exception as e:
+        logger.error(f"Error loading career data: {str(e)}")
+        return pd.DataFrame()
+def search_career_in_csv(query):
+    career_data = load_career_data()
+    if career_data.empty:
+        return None
+    
+    # Convert query to lowercase for better matching
+    query = query.lower()
+    
+    # First try exact match
+    for idx, row in career_data.iterrows():
+        if row['career_name'].lower() == query:
+            return row['details']
+    
+    # If no exact match, try fuzzy matching
+    best_match_score = 0
+    best_match_details = None
+    
+    for idx, row in career_data.iterrows():
+        score = fuzz.ratio(query, row['career_name'].lower())
+        if score > 80 and score > best_match_score:  # 80% similarity threshold
+            best_match_score = score
+            best_match_details = row['details']
+    
+    return best_match_details
 
 def initialize_model():
     try:
@@ -57,7 +90,24 @@ def initialize_model():
         return None
 
 def get_gemini_response(user_input):
-    logger.info("Generating response for user input")
+    logger.info("Processing user input")
+    
+    # First, check if the input is asking about a career
+    career_related_keywords = ['career', 'job', 'profession', 'work', 'engineer', 'engineering']
+    
+    # Check if the input contains career-related keywords
+    is_career_query = any(keyword in user_input.lower() for keyword in career_related_keywords)
+    
+    if is_career_query:
+        # Try to find career information in CSV
+        career_info = search_career_in_csv(user_input)
+        
+        if career_info:
+            logger.info("Career information found in CSV")
+            return career_info
+    
+    # If no career information found in CSV or not a career query, use Gemini
+    logger.info("Using Gemini for response")
     model = initialize_model()
     if model is None:
         return "I apologize, but there was an issue initializing the AI model. Please try again later."
@@ -69,19 +119,18 @@ def get_gemini_response(user_input):
     ]
 
     # Add conversation history to the prompt
-    for entry in conversation_history[-5:]:  # Include last 5 exchanges
+    for entry in conversation_history[-5:]:
         prompt_parts.insert(-2, f"User: {entry['user']}")
         prompt_parts.insert(-2, f"Assistant: {entry['assistant']}")
 
-    logger.info(f"Sending prompt to Gemini: {prompt_parts}")
-
     try:
         response = model.generate_content(prompt_parts)
-        logger.info(f"Received response from Gemini: {response.text}")
+        logger.info("Received response from Gemini")
         return response.text
     except Exception as e:
         logger.error(f"Error generating Gemini response: {str(e)}")
         return "I apologize, but there was an issue generating the response. Please try again."
+
 
 def token_required(f):
     @wraps(f)

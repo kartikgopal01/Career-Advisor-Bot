@@ -1283,3 +1283,408 @@ INFO:werkzeug:127.0.0.1 - - [10/Nov/2024 19:46:34] "GET / HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [10/Nov/2024 19:46:35] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [10/Nov/2024 19:46:35] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [10/Nov/2024 19:46:35] "[36mGET /static/img/prathamesh.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 904-587-750
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:12:02] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:12:02] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:12:02] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:12:10] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:12:11] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:12:11] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:12:11] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:12:11] "[36mGET /static/img/prathamesh.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:12:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:12:43] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:12:43] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:12:43] "[36mGET /static/img/prathamesh.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:13:01] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: hey
+INFO:__main__:Generating response for user input
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Sending prompt to Gemini: ["You are an AI assistant specializing in engineering careers and skills. Your role is to provide comprehensive and accurate information about various engineering fields, career paths, required skills, job prospects, and skill development. Focus on delivering concise, relevant, and up-to-date responses tailored to the user's specific query. Include information about both technical and soft skills relevant to engineering careers. If a query is outside the scope of engineering careers or skills, politely redirect the conversation back to these topics. For salary expectations, provide ranges based on recent industry data, specifying the country (default to India unless otherwise specified). Suggest resources for skill development when appropriate.", 'User: hey', 'Assistant: ']
+ERROR:__main__:Error generating Gemini response: Timeout of 600.0s exceeded, last exception: 503 DNS resolution failed for generativelanguage.googleapis.com:443: UNAVAILABLE: getaddrinfo: WSA Error (No such host is known.
+ -- 11001)
+INFO:__main__:Gemini response: I apologize, but there was an issue generating the response. Please try again.
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 10:23:17] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\karti\\Desktop\\project-root\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+ERROR:__main__:Error loading career data from CSV: [Errno 2] No such file or directory: 'career_data.csv'
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 904-587-750
+INFO:__main__:Career data loaded from CSV.
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:__main__:Career data loaded from CSV.
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 904-587-750
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:41:41] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:41:41] "GET /static/css/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:41:41] "GET /static/js/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:41:41] "[36mGET /static/img/prathamesh.jpg HTTP/1.1[0m" 304 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: hi
+INFO:__main__:Generating response for user input
+INFO:__main__:Initializing the Gemini model
+ERROR:__main__:Error in chat route: name 'conversation_history' is not defined
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:41:47] "[35m[1mPOST /chat HTTP/1.1[0m" 500 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: hello
+INFO:__main__:Generating response for user input
+INFO:__main__:Initializing the Gemini model
+ERROR:__main__:Error in chat route: name 'conversation_history' is not defined
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:41:51] "[35m[1mPOST /chat HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\karti\\Desktop\\project-root\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 904-587-750
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:47:26] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:47:26] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:47:26] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:47:26] "[36mGET /static/img/prathamesh.jpg HTTP/1.1[0m" 304 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: hi
+INFO:__main__:Generating response for user input
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Sending prompt to Gemini: ["You are an AI assistant specializing in engineering careers and skills. Your role is to provide comprehensive and accurate information about various engineering fields, career paths, required skills, job prospects, and skill development. Focus on delivering concise, relevant, and up-to-date responses tailored to the user's specific query. Include information about both technical and soft skills relevant to engineering careers. If a query is outside the scope of engineering careers or skills, politely redirect the conversation back to these topics. For salary expectations, provide ranges based on recent industry data, specifying the country (default to India unless otherwise specified). Suggest resources for skill development when appropriate.", 'User: hi', 'Assistant: ']
+INFO:__main__:Received response from Gemini: Hello! I'm here to help you with any questions you have about engineering careers and skills. Just ask, and I'll do my best to provide you with comprehensive and accurate information.
+INFO:__main__:Gemini response: Hello! I'm here to help you with any questions you have about engineering careers and skills. Just ask, and I'll do my best to provide you with comprehensive and accurate information.
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:47:41] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\karti\\Desktop\\project-root\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 904-587-750
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:54:25] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:54:25] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:54:25] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:54:25] "[36mGET /static/img/prathamesh.jpg HTTP/1.1[0m" 304 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: hi
+INFO:__main__:Processing user input
+INFO:__main__:Using Gemini for response
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Received response from Gemini
+INFO:__main__:Gemini response: Hello, I'm an AI assistant specializing in engineering careers and skills. I can provide information about various engineering fields, career paths, required skills, job prospects, and skill development. Let me know how I can help you today.
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:54:37] "POST /chat HTTP/1.1" 200 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: can u suggest me about career software engineering
+INFO:__main__:Processing user input
+INFO:__main__:Using Gemini for response
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Received response from Gemini
+INFO:__main__:Gemini response: **Career in Software Engineering**
+
+**Overview:**
+Software engineering involves the design, development, testing, and maintenance of software systems. It encompasses various aspects of computer science, including programming, software design, algorithms, and data structures.
+
+**Job Roles:**
+* Software Engineer
+* Software Developer
+* Application Developer
+* Full-Stack Developer
+* DevOps Engineer
+
+**Required Skills:**
+
+**Technical Skills:**
+* Programming languages (e.g., Java, Python, C++)
+* Software design principles
+* Data structures and algorithms
+* Operating systems and networking
+* Cloud computing
+* Agile methodologies
+
+**Soft Skills:**
+* Problem-solving
+* Analytical thinking
+* Communication
+* Teamwork
+* Adaptability
+
+**Career Path:**
+Software engineers typically start as junior developers and gradually move up to senior and lead positions. With experience and specialization, they can advance into roles such as:
+* Software Architect
+* Technical Lead
+* Project Manager
+
+**Job Prospects:**
+Software engineering is a high-demand field with strong job prospects. The Bureau of Labor Statistics projects 25% growth in software developer jobs in the US from 2021 to 2031. In India, the IT industry is expected to grow at 7.7% annually until 2026.
+
+**Salary Expectations:**
+In India, software engineers can earn an average salary of \u20b98-12 lakhs per annum at the entry-level. With experience and specialization, salaries can increase to \u20b920-30 lakhs or more.
+
+**Skill Development:**
+* Online courses and certifications from platforms like Coursera, edX, and Udemy
+* Hackathons and coding competitions
+* Open-source project contributions
+* Workshops and conferences
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:55:14] "POST /chat HTTP/1.1" 200 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: career Software Engineer
+INFO:__main__:Processing user input
+INFO:__main__:Career information found in CSV
+INFO:__main__:Gemini response: Software Engineers design, develop, test, and maintain software applications. Required skills include proficiency in programming languages like Python, Java, and C++, as well as problem-solving and debugging skills. Courses: B.Tech/B.E. in Computer Science or Information Technology. Certification options: Full Stack Development, Data Structures, and Algorithms. Average starting salary: \u20b94-8 LPA (Lakhs per annum).
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:57:02] "POST /chat HTTP/1.1" 200 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: can u suggest me salary and skill for that
+INFO:__main__:Processing user input
+INFO:__main__:Using Gemini for response
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Received response from Gemini
+INFO:__main__:Gemini response: **Salary Expectations for Software Engineers in India:**
+
+* Entry-level: \u20b94-8 LPA (Lakhs per annum)
+* Mid-level (3-6 years of experience): \u20b98-15 LPA
+* Senior-level (6+ years of experience): \u20b915-25 LPA
+* Lead/Architect-level: \u20b925 LPA and above
+
+**Essential Skills for Software Engineers:**
+
+**Technical Skills:**
+
+* Programming languages (e.g., Python, Java, C++, JavaScript)
+* Data structures and algorithms
+* Software design principles
+* Object-oriented programming
+* Cloud computing
+* Agile methodologies
+
+**Soft Skills:**
+
+* Problem-solving
+* Analytical thinking
+* Communication
+* Teamwork
+* Adaptability
+
+**Skill Development Resources:**
+
+* Online courses and certifications from platforms like Coursera, edX, and Udemy
+* Hackathons and coding competitions
+* Open-source project contributions
+* Workshops and conferences
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 12:58:18] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:00:11] "[33mGET /profile HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:06:39] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:06:40] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:06:40] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:06:40] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:06:57] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:06:57] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:06:57] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:06:57] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:06:57] "[36mGET /static/img/prathamesh.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:10:23] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:10:23] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:10:23] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:10:23] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:11:19] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:11:19] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:11:19] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:11:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:11:20] "[36mGET /static/img/prathamesh.jpg HTTP/1.1[0m" 304 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: hi can you suggest me about software engineer career
+INFO:__main__:Processing user input
+INFO:__main__:Using Gemini for response
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Received response from Gemini
+INFO:__main__:Gemini response: **Career in Software Engineering**
+
+**Overview:**
+Software engineering involves the design, development, testing, and maintenance of software systems. It encompasses various aspects of computer science, including programming, software design, algorithms, and data structures.
+
+**Job Roles:**
+* Software Engineer
+* Software Developer
+* Application Developer
+* Full-Stack Developer
+* DevOps Engineer
+
+**Required Skills:**
+
+**Technical Skills:**
+* Programming languages (e.g., Java, Python, C++)
+* Software design principles
+* Data structures and algorithms
+* Operating systems and networking
+* Cloud computing
+* Agile methodologies
+
+**Soft Skills:**
+* Problem-solving
+* Analytical thinking
+* Communication
+* Teamwork
+* Adaptability
+
+**Career Path:**
+Software engineers typically start as junior developers and gradually move up to senior and lead positions. With experience and specialization, they can advance into roles such as:
+* Software Architect
+* Technical Lead
+* Project Manager
+
+**Job Prospects:**
+Software engineering is a high-demand field with strong job prospects. The Bureau of Labor Statistics projects 25% growth in software developer jobs in the US from 2021 to 2031. In India, the IT industry is expected to grow at 7.7% annually until 2026.
+
+**Salary Expectations:**
+In India, software engineers can earn an average salary of \u20b98-12 lakhs per annum at the entry-level. With experience and specialization, salaries can increase to \u20b920-30 lakhs or more.
+
+**Skill Development:**
+* Online courses and certifications from platforms like Coursera, edX, and Udemy
+* Hackathons and coding competitions
+* Open-source project contributions
+* Workshops and conferences
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:11:50] "POST /chat HTTP/1.1" 200 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: Data Scientist
+INFO:__main__:Processing user input
+INFO:__main__:Using Gemini for response
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Received response from Gemini
+INFO:__main__:Gemini response: **Career in Data Science**
+
+**Overview:**
+Data science involves extracting insights and knowledge from large datasets using statistical and computational techniques. It combines skills from mathematics, statistics, computer science, and domain expertise.
+
+**Job Roles:**
+* Data Scientist
+* Data Analyst
+* Machine Learning Engineer
+* Data Engineer
+* Business Intelligence Analyst
+
+**Required Skills:**
+
+**Technical Skills:**
+* Programming languages (e.g., Python, R)
+* Statistical modeling
+* Machine learning algorithms
+* Data visualization
+* Cloud computing
+* Big data technologies
+
+**Soft Skills:**
+* Problem-solving
+* Analytical thinking
+* Communication
+* Teamwork
+* Business acumen
+
+**Career Path:**
+Data scientists typically start as junior analysts or data engineers and gradually move up to senior and lead positions. With experience and specialization, they can advance into roles such as:
+* Chief Data Scientist
+* Data Science Manager
+* Machine Learning Architect
+
+**Job Prospects:**
+Data science is a rapidly growing field with strong job prospects. The Bureau of Labor Statistics projects 25% growth in data scientist jobs in the US from 2021 to 2031. In India, the demand for data scientists is expected to increase significantly due to the growing adoption of data analytics in various industries.
+
+**Salary Expectations:**
+In India, data scientists can earn an average salary of \u20b98-12 lakhs per annum at the entry-level. With experience and specialization, salaries can increase to \u20b920-30 lakhs or more.
+
+**Skill Development:**
+* Online courses and certifications from platforms like Coursera, edX, and Udemy
+* Kaggle competitions and projects
+* Open-source contributions to data science libraries
+* Workshops and conferences
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:12:39] "POST /chat HTTP/1.1" 200 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: career Data Scientist
+INFO:__main__:Processing user input
+INFO:__main__:Using Gemini for response
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Received response from Gemini
+INFO:__main__:Gemini response: **Career in Data Science**
+
+**Overview:**
+Data science involves extracting insights and knowledge from large datasets using statistical and computational techniques. It combines skills from mathematics, statistics, computer science, and domain expertise.
+
+**Job Roles:**
+* Data Scientist
+* Data Analyst
+* Machine Learning Engineer
+* Data Engineer
+* Business Intelligence Analyst
+
+**Required Skills:**
+
+**Technical Skills:**
+* Programming languages (e.g., Python, R)
+* Statistical modeling
+* Machine learning algorithms
+* Data visualization
+* Cloud computing
+* Big data technologies
+
+**Soft Skills:**
+* Problem-solving
+* Analytical thinking
+* Communication
+* Teamwork
+* Business acumen
+
+**Career Path:**
+Data scientists typically start as junior analysts or data engineers and gradually move up to senior and lead positions. With experience and specialization, they can advance into roles such as:
+* Chief Data Scientist
+* Data Science Manager
+* Machine Learning Architect
+
+**Job Prospects:**
+Data science is a rapidly growing field with strong job prospects. The Bureau of Labor Statistics projects 25% growth in data scientist jobs in the US from 2021 to 2031. In India, the demand for data scientists is expected to increase significantly due to the growing adoption of data analytics in various industries.
+
+**Salary Expectations:**
+In India, data scientists can earn an average salary of \u20b98-12 lakhs per annum at the entry-level. With experience and specialization, salaries can increase to \u20b920-30 lakhs or more.
+
+**Skill Development:**
+* Online courses and certifications from platforms like Coursera, edX, and Udemy
+* Kaggle competitions and projects
+* Open-source contributions to data science libraries
+* Workshops and conferences
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:12:54] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\karti\\Desktop\\project-root\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 904-587-750
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:24:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:24:20] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:24:20] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:24:20] "[36mGET /static/img/prathamesh.jpg HTTP/1.1[0m" 304 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: hi
+INFO:__main__:Processing user input
+INFO:__main__:Using Gemini for response
+ERROR:__main__:Error in chat route: name 'initialize_model' is not defined
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:24:26] "[35m[1mPOST /chat HTTP/1.1[0m" 500 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: hello
+INFO:__main__:Processing user input
+INFO:__main__:Using Gemini for response
+ERROR:__main__:Error in chat route: name 'initialize_model' is not defined
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:24:30] "[35m[1mPOST /chat HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\karti\\Desktop\\project-root\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 904-587-750
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:25:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:25:35] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:25:35] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Nov/2024 13:25:35] "[36mGET /static/img/prathamesh.jpg HTTP/1.1[0m" 304 -
