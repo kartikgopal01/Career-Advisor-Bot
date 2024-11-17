@@ -1077,3 +1077,146 @@ INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 12:17:07] "GET / HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 12:17:07] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 12:17:07] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 12:17:15] "[36mGET /static/html/ai-engineer.html HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 984-259-276
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:32:50] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:32:50] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:32:50] "GET /static/js/auth.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:33:00] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:33:00] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:33:00] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:33:00] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: hi
+INFO:__main__:Processing user input
+INFO:__main__:NLP results: {'entities': [], 'tokens': ['hi'], 'pos_tags': [('hi', 'INTJ')]}
+INFO:__main__:Using Gemini for response
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Received response from Gemini
+INFO:__main__:Gemini response: Hello there! I'm here to help you with any questions you have about engineering careers and skills. Feel free to ask me anything about different engineering fields, career paths, required skills, job prospects, skill development, and more.
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:33:10] "POST /chat HTTP/1.1" 200 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: can u suggest me a career software engineer
+INFO:__main__:Processing user input
+INFO:__main__:NLP results: {'entities': [], 'tokens': ['can', 'u', 'suggest', 'me', 'a', 'career', 'software', 'engineer'], 'pos_tags': [('can', 'AUX'), ('u', 'PRON'), ('suggest', 'VERB'), ('me', 'PRON'), ('a', 'DET'), ('career', 'NOUN'), ('software', 'NOUN'), ('engineer', 'NOUN')]}
+INFO:__main__:Using Gemini for response
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Received response from Gemini
+INFO:__main__:Gemini response: Sure, I can help you with that. Software engineering is a great career choice, with plenty of job opportunities and good earning potential. Here are some things to consider if you're interested in becoming a software engineer:
+
+**Technical Skills**
+
+* Programming languages (Java, Python, C++, etc.)
+* Data structures and algorithms
+* Software design patterns
+* Software development tools and methodologies (Agile, Scrum, etc.)
+* Cloud computing (AWS, Azure, GCP, etc.)
+* Databases (SQL, NoSQL, etc.)
+
+**Soft Skills**
+
+* Problem-solving
+* Analytical thinking
+* Communication
+* Teamwork
+* Time management
+
+**Career Path**
+
+There are many different career paths available to software engineers. You could work as a:
+
+* Software developer
+* Software architect
+* Software tester
+* DevOps engineer
+* Data scientist
+* Machine learning engineer
+
+**Job Prospects**
+
+The job outlook for software engineers is very good. According to the U.S. Bureau of Labor Statistics, the demand for software engineers is projected to grow by 22% from 2020 to 2030. This is much faster than the average for all occupations.
+
+**Skill Development**
+
+There are many ways to develop your software engineering skills. You can take courses at a university or community college, or you can learn online through platforms like Coursera and Udemy. You can also gain experience by working on personal projects or contributing to open-source projects.
+
+**Salary Expectations**
+
+The average salary for software engineers in India is between \u20b94 lakhs and \u20b912 lakhs per year, depending on experience and location.
+
+I hope this information is helpful. If you have any other questions, please don't hesitate to ask.
+
+**Additional Resources**
+
+* [The Complete Software Engineering Masterclass](https://www.coursera.org/specializations/complete-software-engineering-masterclass)
+* [Udemy](https://www.udemy.com/)
+* [Coursera](https://www.coursera.org/)
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:33:29] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\karti\\Desktop\\project-root\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 984-259-276
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Detected change in 'C:\\Users\\karti\\Desktop\\project-root\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 984-259-276
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:38:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:38:15] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:38:15] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: explain about career software engineer
+INFO:__main__:Processing user input
+ERROR:__main__:Error in chat route: name 'perform_nlp' is not defined
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:38:32] "[35m[1mPOST /chat HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\karti\\Desktop\\project-root\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 984-259-276
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:41:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:41:24] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:41:24] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:__main__:POST request received at /chat
+INFO:__main__:Received message: explain about career software engineer
+INFO:__main__:Processing user input
+INFO:__main__:NLP results: {'entities': [], 'tokens': ['explain', 'about', 'career', 'software', 'engineer'], 'pos_tags': [('explain', 'VERB'), ('about', 'ADP'), ('career', 'NOUN'), ('software', 'NOUN'), ('engineer', 'NOUN')]}
+INFO:__main__:Using Gemini for response
+INFO:__main__:Initializing the Gemini model
+INFO:__main__:Received response from Gemini
+INFO:__main__:Gemini response: **Career: Software Engineer**
+
+Software Engineers design, develop, test, and maintain software applications. They work on various projects, from small mobile apps to large-scale enterprise systems. The role requires proficiency in programming languages like Python, Java, and C++, as well as problem-solving and debugging skills.
+
+**Required Skills:**
+
+* **Technical Skills:**
+    * Programming Languages (Python, Java, C++, etc.)
+    * Data Structures and Algorithms
+    * Software Design Patterns
+    * Software Development Methodologies (Agile, Scrum, etc.)
+    * Cloud Computing (AWS, Azure, etc.)
+    * Databases (SQL, NoSQL)
+* **Soft Skills:**
+    * Problem-Solving
+    * Analytical Thinking
+    * Communication
+    * Teamwork
+
+**Education and Certification:**
+
+* Bachelor's degree in Computer Science or Information Technology
+* Certification options: Full Stack Development, Data Structures and Algorithms
+
+**Job Prospects:**
+
+Software Engineers are in high demand due to the increasing reliance on technology across industries. The job outlook is expected to grow rapidly in the coming years.
+
+**Salary Expectations:**
+
+In India, the average starting salary for Software Engineers is \u20b94-8 LPA (Lakhs per annum). Experienced professionals can earn significantly higher salaries based on their skills and experience.
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:41:49] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Nov/2024 16:45:21] "[36mGET /static/html/ai-engineer.html HTTP/1.1[0m" 304 -

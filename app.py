@@ -8,17 +8,23 @@ from pymongo import MongoClient
 from werkzeug.security import generate_password_hash, check_password_hash
 import google.generativeai as genai
 import pandas as pd
-from fuzzywuzzy import fuzz  # Add this for fuzzy string matchingi
+from fuzzywuzzy import process
+import os
+from dotenv import load_dotenv
+import spacy
+
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
 # Configuration
-app.config['SECRET_KEY'] = 'AIzaSyCWJ-9Cux77MKM4viOypRwD5-p60Med_pQ'
-MONGO_URI = 'mongodb://localhost:27017/'
-DB_NAME = 'career_advisor_db'
-GEMINI_API_KEY = "AIzaSyCWJ-9Cux77MKM4viOypRwD5-p60Med_pQ"
-CAREER_DATA_PATH = 'career_data.csv'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017/')
+DB_NAME = os.getenv('DB_NAME', 'career_advisor_db')
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+CAREER_DATA_PATH = os.getenv('CAREER_DATA_PATH', 'career_data.csv')
 
 # MongoDB setup
 client = MongoClient(MONGO_URI)
@@ -45,13 +51,22 @@ SAFETY_SETTINGS = [
     {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
 ]
 
+# Load spaCy model
+try:
+    nlp = spacy.load("en_core_web_sm")
+except Exception as e:
+    logger.error(f"Error loading spaCy model: {str(e)}")
+    nlp = None
+
 conversation_history = []
+
 def load_career_data():
     try:
         return pd.read_csv(CAREER_DATA_PATH)
     except Exception as e:
         logger.error(f"Error loading career data: {str(e)}")
         return pd.DataFrame()
+
 def search_career_in_csv(query):
     career_data = load_career_data()
     if career_data.empty:
@@ -60,22 +75,19 @@ def search_career_in_csv(query):
     # Convert query to lowercase for better matching
     query = query.lower()
     
-    # First try exact match
-    for idx, row in career_data.iterrows():
-        if row['career_name'].lower() == query:
-            return row['details']
+    # Use fuzzywuzzy to find the best match
+    career_names = career_data['career_name'].str.lower().tolist()
+    best_match, score = process.extractOne(query, career_names)
     
-    # If no exact match, try fuzzy matching
-    best_match_score = 0
-    best_match_details = None
+    if score >= 80:  # 80% similarity threshold
+        matched_row = career_data[career_data['career_name'].str.lower() == best_match].iloc[0]
+        return {
+            'career_name': matched_row['career_name'],
+            'details': matched_row['details'],
+            'match_score': score
+        }
     
-    for idx, row in career_data.iterrows():
-        score = fuzz.ratio(query, row['career_name'].lower())
-        if score > 80 and score > best_match_score:  # 80% similarity threshold
-            best_match_score = score
-            best_match_details = row['details']
-    
-    return best_match_details
+    return None
 
 def initialize_model():
     try:
@@ -89,24 +101,40 @@ def initialize_model():
         logger.error(f"Error initializing Gemini model: {str(e)}")
         return None
 
+def perform_nlp(text):
+    if nlp is None:
+        logger.warning("spaCy model not loaded. NLP analysis will be skipped.")
+        return {"error": "NLP model not available"}
+    
+    try:
+        doc = nlp(text)
+        entities = [(ent.text, ent.label_) for ent in doc.ents]
+        return {
+            'entities': entities,
+            'tokens': [token.text for token in doc],
+            'pos_tags': [(token.text, token.pos_) for token in doc]
+        }
+    except Exception as e:
+        logger.error(f"Error performing NLP analysis: {str(e)}")
+        return {"error": f"NLP analysis failed: {str(e)}"}
+
 def get_gemini_response(user_input):
     logger.info("Processing user input")
     
-    # First, check if the input is asking about a career
-    career_related_keywords = ['career', 'job', 'profession', 'work', 'engineer', 'engineering']
+    # Perform NLP on user input
+    nlp_results = perform_nlp(user_input)
+    logger.info(f"NLP results: {nlp_results}")
     
-    # Check if the input contains career-related keywords
+    # Check if the input is asking about a career
+    career_related_keywords = ['career', 'job', 'profession', 'work', 'engineer', 'engineering']
     is_career_query = any(keyword in user_input.lower() for keyword in career_related_keywords)
     
+    career_info = None
     if is_career_query:
         # Try to find career information in CSV
         career_info = search_career_in_csv(user_input)
-        
-        if career_info:
-            logger.info("Career information found in CSV")
-            return career_info
     
-    # If no career information found in CSV or not a career query, use Gemini
+    # Initialize Gemini model
     logger.info("Using Gemini for response")
     model = initialize_model()
     if model is None:
@@ -115,13 +143,21 @@ def get_gemini_response(user_input):
     prompt_parts = [
         "You are an AI assistant specializing in engineering careers and skills. Your role is to provide comprehensive and accurate information about various engineering fields, career paths, required skills, job prospects, and skill development. Focus on delivering concise, relevant, and up-to-date responses tailored to the user's specific query. Include information about both technical and soft skills relevant to engineering careers. If a query is outside the scope of engineering careers or skills, politely redirect the conversation back to these topics. For salary expectations, provide ranges based on recent industry data, specifying the country (default to India unless otherwise specified). Suggest resources for skill development when appropriate.",
         f"User: {user_input}",
-        "Assistant: "
+        f"NLP Analysis: {nlp_results}",
     ]
+
+    if career_info:
+        prompt_parts.append(f"Career Information from CSV: {career_info}")
+        prompt_parts.append("Use the provided career information to enhance your response, but feel free to add more details or context if necessary.")
+    else:
+        prompt_parts.append("No specific career information found in our database. Please provide a general response based on your knowledge.")
+
+    prompt_parts.append("Assistant: ")
 
     # Add conversation history to the prompt
     for entry in conversation_history[-5:]:
-        prompt_parts.insert(-2, f"User: {entry['user']}")
-        prompt_parts.insert(-2, f"Assistant: {entry['assistant']}")
+        prompt_parts.insert(-1, f"User: {entry['user']}")
+        prompt_parts.insert(-1, f"Assistant: {entry['assistant']}")
 
     try:
         response = model.generate_content(prompt_parts)
@@ -130,6 +166,8 @@ def get_gemini_response(user_input):
     except Exception as e:
         logger.error(f"Error generating Gemini response: {str(e)}")
         return "I apologize, but there was an issue generating the response. Please try again."
+
+
 
 
 def token_required(f):
