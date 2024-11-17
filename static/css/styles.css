@@ -673,7 +673,6 @@ body {
   }
   
   .navbar {
-    background-color: var(--background-color);
     box-shadow: var(--card-shadow);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
@@ -743,7 +742,7 @@ body {
 
 /* Base Typography */
 body {
-    font-family: "Doto", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.6;
 }
 
@@ -794,7 +793,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo {
-    font-family: 'Clash Display', sans-serif;
+    font-family:  sans-serif;
     font-weight: 600;
     letter-spacing: -0.02em;
 }
@@ -961,4 +960,280 @@ body:not(.dark-mode) .secondary-button:hover{
     .modal {
         padding: 10px;
     }
+}
+
+/* Updated Light Mode Styles */
+:root {
+    --primary-color: #e60023; /* Updated primary color */
+    --secondary-color: #333; /* Updated secondary color */
+    --background-color: #fff; /* Updated background color */
+    --text-color: #333; /* Updated text color */
+    --card-background: #f0f0f0; /* Updated card background */
+}
+
+/* ... existing CSS ... */
+
+body:not(.dark-mode) {
+    background-color: var(--background-color); /* Light mode background */
+    color: var(--text-color); /* Light mode text color */
+}
+
+/* ... existing CSS ... */
+
+.career-card {
+    background-color: var(--card-background); /* Light mode card background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light mode shadow */
+}
+
+/* ... existing CSS ... */
+
+.primary-button {
+    background-color: var(--primary-color); /* Light mode primary button */
+    color: white; /* Light mode primary button text */
+}
+
+/* ... existing CSS ... */
+
+.secondary-button {
+    background-color: white; /* Light mode secondary button background */
+    color: var(--primary-color); /* Light mode secondary button text */
+    border: 2px solid var(--primary-color); /* Light mode secondary button border */
+}
+
+/* ... existing CSS ... */
+
+.learn-more {
+    background-color: var(--primary-color); /* Light mode learn more button */
+    color: white; /* Light mode learn more button text */
+}
+.career-card:hover .career-image {
+    transform: scale(1.05);
+  }
+  .career-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .career-card {
+    background-color: var(--card-background);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+      transition-property: all;
+      transition-duration: 0.3s;
+      transition-timing-function: ease;
+  }
+  .careers-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #333;
+}
+
+.careers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.career-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.career-card:hover {
+    transform: translateY(-5px);
+}
+
+.career-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.career-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.career-icon {
+    width: 50px;
+    height: 50px;
+   
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+body:not(.dark-mode) .career-icon{
+    background-color: #dc2626;
+}
+
+.career-icon i {
+    
+    font-size: 1.5rem;
+}
+body:not(.dark-mode) .career-icon i{
+    color: white;
+}
+
+.career-content h3 {
+    font-size: 1.25rem;
+    
+    margin: 0 0 0.5rem 0;
+}
+body:not(.dark-mode) .career-content h3 {
+    color: #333;
+}
+
+.career-content p {
+    
+    margin: 0 0 1rem 0;
+    flex-grow: 1;
+}
+body:not(.dark-mode) .career-content p{
+    color: #666;
+}
+
+.career-skills {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.career-skills li {
+   
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+}
+body:not(.dark-mode) .career-skills li {
+    background-color: #f0f9ff;
+    color: #0369a1;
+}
+
+.learn-more {
+    
+    
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+body:not(.dark-mode) .learn-more{
+    background-color: #dc2626;
+    color: white;
+}
+
+body:not(.dark-mode).learn-more:hover {
+    background-color: #b91c1c;
+}
+
+@media (max-width: 768px) {
+    .careers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .career-card {
+        max-width: 100%;
+    }
+}
+
+body:not(.dark-mode) .nav-links a{
+    font-weight: 700;
+    color: black;
+}
+.logo {
+    color: #00168b;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  body:not(.dark-mode) .header{
+    background-color: white;
+  }
+  body:not(.dark-mode) .modal-body{
+    background-color: white;
+    color: black;
+  }
+  body:not(.dark-mode) .fa-sun::before{
+    color: black;
+  }
+  body:not(.dark-mode) .team-member{background-color: var(--card-background);
+color: black;}
+body:not(.dark-mode) .team-member h3{
+    color: black;
+}
+
+.about-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.services-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background-color: var(--surface-dark);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: transform var(--transition-speed);
+    cursor: pointer;
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.footer {
+    background-color: var(--surface-dark);
+    color: var(--text-primary);
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+/* Add animations for the services section */
+[data-aos] {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
 }

@@ -22,7 +22,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
         }
@@ -292,17 +292,8 @@
                     <input type="password" id="login-password" placeholder="Password" required>
                     <i class='bx bxs-lock-alt'></i>
                 </div>
-                <div class="forgot-link">
-                    <a href="#">Forgot Password?</a>
-                </div>
                 <button type="submit" class="btn">Login</button>
-                <p>or login with social platforms</p>
-                <div class="social-icons">
-                    <a href="#"><i class='bx bxl-google' ></i></a>
-                    <a href="#"><i class='bx bxl-facebook' ></i></a>
-                    <a href="#"><i class='bx bxl-github' ></i></a>
-                    <a href="#"><i class='bx bxl-linkedin' ></i></a>
-                </div>
+            
             </form>
         </div>
 
@@ -322,13 +313,7 @@
                     <i class='bx bxs-lock-alt'></i>
                 </div>
                 <button type="submit" class="btn">Register</button>
-                <p>or register with social platforms</p>
-                <div class="social-icons">
-                    <a href="#"><i class='bx bxl-google' ></i></a>
-                    <a href="#"><i class='bx bxl-facebook' ></i></a>
-                    <a href="#"><i class='bx bxl-github' ></i></a>
-                    <a href="#"><i class='bx bxl-linkedin' ></i></a>
-                </div>
+                
             </form>
         </div>
 
@@ -347,6 +332,16 @@
         </div>
     </div>
 
+    <script>
+        // Add event listeners for the toggle buttons
+        document.getElementById('show-signup').addEventListener('click', () => {
+            document.querySelector('.container').classList.add('active');
+        });
+
+        document.getElementById('show-login').addEventListener('click', () => {
+            document.querySelector('.container').classList.remove('active');
+        });
+    </script>
     <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
 </body>
 </html>

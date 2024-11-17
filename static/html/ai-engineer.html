@@ -3,22 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Engineer Roadmap - CareerWise</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>AI Engineer Roadmap - Interactive Journey</title>
     <style>
-        :root {
-            --primary-color: #6200ea;
-            --secondary-color: #03dac6;
-            --background-color: #121212;
-            --surface-color: #1e1e1e;
-            --on-surface-color: #ffffff;
-            --text-primary: #ffffff;
-            --text-secondary: #b0bec5;
-            --animation-speed: 0.3s;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
-        .light-theme {
+        :root {
             --primary-color: #6200ea;
             --secondary-color: #03dac6;
             --background-color: #f5f5f5;
@@ -28,6 +17,16 @@
             --text-secondary: #6c757d;
         }
 
+        .dark-theme {
+            --primary-color: #bb86fc;
+            --secondary-color: #03dac6;
+            --background-color: #121212;
+            --surface-color: #1e1e1e;
+            --on-surface-color: #ffffff;
+            --text-primary: #ffffff;
+            --text-secondary: #b0bec5;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -35,12 +34,14 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: var(--background-color);
             color: var(--text-primary);
             line-height: 1.6;
-            transition: background-color var(--animation-speed) ease, color var(--animation-speed) ease;
-            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%236200ea" fill-opacity="0.1" d="M0 0 L50 100 L100 0 Z" /></svg>');
+            background-size: cover;
+            background-attachment: fixed;
         }
 
         .container {
@@ -52,24 +53,28 @@
         header {
             text-align: center;
             margin-bottom: 3rem;
-            animation: fadeInDown 1s ease-out;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            color: var(--primary-color);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .theme-switch {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1000;
             background-color: var(--surface-color);
             color: var(--text-primary);
             border: none;
@@ -78,39 +83,38 @@
             height: 60px;
             font-size: 1.5rem;
             cursor: pointer;
-            transition: all var(--animation-speed) ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
         }
 
         .theme-switch:hover {
             transform: scale(1.1) rotate(15deg);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
 
         .roadmap {
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
         }
 
-        .roadmap-item {
+        .node {
             background-color: var(--surface-color);
             border-radius: 12px;
             padding: 2rem;
             margin-bottom: 2rem;
             width: 100%;
-            max-width: 800px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all var(--animation-speed) ease;
-            cursor: pointer;
+            max-width: 600px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(50px);
             position: relative;
             overflow: hidden;
         }
 
-        .roadmap-item::before {
+        .node::before {
             content: '';
             position: absolute;
             top: 0;
@@ -119,129 +123,105 @@
             height: 4px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             transform: scaleX(0);
-            transform-origin: left;
-            transition: transform var(--animation-speed) ease;
+            transition: transform 0.5s ease;
         }
 
-        .roadmap-item:hover::before,
-        .roadmap-item:active::before,
-        .roadmap-item.active::before {
+        .node.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .node.active::before {
             transform: scaleX(1);
         }
 
-        .roadmap-item:hover,
-        .roadmap-item:active {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .roadmap-item h2 {
-            font-size: 1.8rem;
+        .node h2 {
+            font-size: 2rem;
             margin-bottom: 1rem;
-            color: var(--secondary-color);
-            transition: color var(--animation-speed) ease;
+            color: var(--primary-color);
         }
 
-        .roadmap-item-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height var(--animation-speed) ease;
+        .node p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
         }
 
-        .roadmap-item.active .roadmap-item-content {
-            max-height: 500px;
-        }
-
-        .roadmap-item-content ul {
+        .node ul {
             list-style-type: none;
             padding-left: 1rem;
-            margin-top: 1rem;
         }
 
-        .roadmap-item-content li {
+        .node li {
             margin-bottom: 0.5rem;
             position: relative;
             padding-left: 1.5rem;
             opacity: 0;
             transform: translateX(-20px);
-            transition: all var(--animation-speed) ease;
+            transition: all 0.5s ease;
         }
 
-        .roadmap-item.active .roadmap-item-content li {
+        .node.active li {
             opacity: 1;
             transform: translateX(0);
         }
 
-        .roadmap-item-content li::before {
-            content: "\f0da";
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
+        .node li::before {
+            content: "•";
             position: absolute;
             left: 0;
             color: var(--secondary-color);
         }
 
-        .progress-bar {
-            width: 4px;
+        .navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .nav-button {
             background-color: var(--primary-color);
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 0;
-            bottom: 0;
-            z-index: -1;
+            color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            padding: 0.75rem 1.5rem;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .progress-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-            transform: scaleY(0);
-            transform-origin: top;
-            transition: transform 1s ease;
+        .nav-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        .progress-bar.animate::after {
-            transform: scaleY(1);
+        .nav-button:disabled {
+            background-color: var(--text-secondary);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .progress {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin: 0 1rem;
         }
 
         .resources {
             margin-top: 3rem;
             text-align: center;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 1s forwards;
+            animation: fadeIn 1s ease-out 0.5s both;
         }
 
         .resources h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
 
         .resource-links {
@@ -257,46 +237,16 @@
             padding: 0.75rem 1.5rem;
             border-radius: 30px;
             text-decoration: none;
-            transition: all var(--animation-speed) ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .resource-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            opacity: 0;
-            transition: opacity var(--animation-speed) ease;
-            z-index: -1;
-        }
-
-        .resource-link:hover::before {
-            opacity: 1;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-weight: bold;
         }
 
         .resource-link:hover {
-            color: var(--on-surface-color);
+            background-color: var(--primary-color);
+            color: #ffffff;
             transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .roadmap-item {
-                padding: 1.5rem;
-            }
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .floating-shapes {
@@ -312,155 +262,64 @@
 
         .shape {
             position: absolute;
-            opacity: 0.1;
+            opacity: 0.5;
             animation: float 20s infinite;
         }
 
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, 50px) rotate(90deg); }
+            50% { transform: translate(100px, 0) rotate(180deg); }
+            75% { transform: translate(50px, -50px) rotate(270deg); }
         }
 
-        .shape:nth-child(1) { animation-delay: 0s; }
-        .shape:nth-child(2) { animation-delay: 5s; }
-        .shape:nth-child(3) { animation-delay: 10s; }
-        .shape:nth-child(4) { animation-delay: 15s; }
+        .shape:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .shape:nth-child(2) { top: 80%; left: 50%; animation-delay: 5s; }
+        .shape:nth-child(3) { top: 40%; left: 80%; animation-delay: 10s; }
+        .shape:nth-child(4) { top: 60%; left: 30%; animation-delay: 15s; }
 
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
             }
-            50% {
-                transform: scale(1.05);
-            }
-        }
 
-        .roadmap-item.active {
-            animation: pulse 2s infinite;
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .node {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <button class="theme-switch" aria-label="Toggle theme">
-        <i class="fas fa-moon"></i>
-    </button>
+    <button class="theme-switch" aria-label="Toggle theme">🌓</button>
     <div class="floating-shapes">
-        <div class="shape" style="top: 10%; left: 10%; font-size: 40px;">&#9733;</div>
-        <div class="shape" style="top: 30%; right: 20%; font-size: 60px;">&#9679;</div>
-        <div class="shape" style="bottom: 20%; left: 30%; font-size: 50px;">&#9650;</div>
-        <div class="shape" style="top: 50%; right: 10%; font-size: 45px;">&#9632;</div>
+        <svg class="shape" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="25" r="20" fill="var(--primary-color)" fill-opacity="0.5"/>
+        </svg>
+        <svg class="shape" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" x="5" y="5" fill="var(--secondary-color)" fill-opacity="0.5"/>
+        </svg>
+        <svg class="shape" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="25,5 45,40 5,40" fill="var(--primary-color)" fill-opacity="0.5"/>
+        </svg>
+        <svg class="shape" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M25 5 L45 45 L5 45 Z" fill="var(--secondary-color)" fill-opacity="0.5"/>
+        </svg>
     </div>
     <div class="container">
         <header>
             <h1>AI Engineer Roadmap</h1>
-            <p>Your guide to becoming an AI Engineer in India</p>
+            <p>Your interactive guide to becoming an AI Engineer in India</p>
         </header>
-        <div class="roadmap">
-            <div class="progress-bar"></div>
-            <div class="roadmap-item">
-                <h2>1. Foundation</h2>
-                <div class="roadmap-item-content">
-                    <ul>
-                        <li>Bachelor's degree in Computer Science, IT, or related field</li>
-                        <li>Strong mathematics background (Linear Algebra, Calculus, Statistics)</li>
-                        <li>Programming skills (Python, R, Java)</li>
-                        <li>Data structures and algorithms</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="roadmap-item">
-                <h2>2. Machine Learning Fundamentals</h2>
-                <div class="roadmap-item-content">
-                    <ul>
-                        <li>Supervised and unsupervised learning</li>
-                        <li>Feature engineering and selection</li>
-                        <li>Model evaluation and validation</li>
-                        <li>Popular ML algorithms (Decision Trees, SVM, KNN)</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="roadmap-item">
-                <h2>3. Deep Learning</h2>
-                <div class="roadmap-item-content">
-                    <ul>
-                        <li>Neural Networks architecture</li>
-                        <li>Convolutional Neural Networks (CNN)</li>
-                        <li>Recurrent Neural Networks (RNN)</li>
-                        <li>Transfer Learning</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="roadmap-item">
-                <h2>4. AI Frameworks and Tools</h2>
-                <div class="roadmap-item-content">
-                    <ul>
-                        <li>TensorFlow and Keras</li>
-                        <li>PyTorch</li>
-                        <li>Scikit-learn</li>
-                        <li>OpenCV for computer vision</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="roadmap-item">
-                <h2>5. Natural Language Processing</h2>
-                <div class="roadmap-item-content">
-                    <ul>
-                        <li>Text preprocessing and tokenization</li>
-                        <li>Word embeddings (Word2Vec, GloVe)</li>
-                        <li>Sentiment analysis</li>
-                        <li>Language models and transformers (BERT, GPT)</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="roadmap-item">
-                <h2>6. Big Data and Cloud Computing</h2>
-                <div class="roadmap-item-content">
-                    <ul>
-                        <li>Hadoop and Spark</li>
-                        <li>Cloud platforms (AWS, Azure, Google Cloud)</li>
-                        <li>Distributed computing</li>
-                        <li>Data warehousing and ETL processes</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="roadmap-item">
-                <h2>7. AI Ethics and Responsible AI</h2>
-                <div class="roadmap-item-content">
-                    <ul>
-                        <li>Bias and fairness in AI</li>
-                        <li>Privacy and security concerns</li>
-                        <li>Explainable AI (XAI)</li>
-                        <li>AI governance and regulations in India</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="roadmap-item">
-                <h2>8. Industry Experience and Projects</h2>
-                <div class="roadmap-item-content">
-                    <ul>
-                        <li>Internships at AI companies or research labs</li>
-                        <li>Contribute to open-source AI projects</li>
-                        <li>Participate in AI hackathons and competitions</li>
-                        <li>Build a portfolio of AI projects</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="roadmap-item">
-                <h2>9. Continuous Learning</h2>
-                <div class="roadmap-item-content">
-                    <ul>
-                        <li>Stay updated with latest AI research papers</li>
-                        <li>Attend AI conferences and workshops</li>
-                        <li>Pursue advanced certifications (e.g., IIIT-H's Executive PG in ML & AI)</li>
-                        <li>Consider higher education (M.Tech or Ph.D. in AI)</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="navigation">
+            <button id="prevBtn" class="nav-button" aria-label="Previous node">Previous</button>
+            <span class="progress">Step <span id="currentStep">1</span> of 9</span>
+            <button id="nextBtn" class="nav-button" aria-label="Next node">Next</button>
         </div>
+        <div class="roadmap" id="roadmap"></div>
         <div class="resources">
             <h2>Additional Resources</h2>
             <div class="resource-links">
@@ -472,97 +331,153 @@
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const roadmapItems = document.querySelectorAll('.roadmap-item');
-            const progressBar = document.querySelector('.progress-bar');
-            const themeSwitch = document.querySelector('.theme-switch');
-            const themeIcon = themeSwitch.querySelector('i');
-            const shapes = document.querySelectorAll('.shape');
+        const roadmapData = [
+            {
+                title: "Foundation",
+                description: "Build your core skills",
+                content: [
+                    "Bachelor's degree in Computer Science, IT, or related field",
+                    "Strong mathematics background (Linear Algebra, Calculus, Statistics)",
+                    "Programming skills (Python, R, Java)",
+                    "Data structures and algorithms"
+                ]
+            },
+            {
+                title: "Machine Learning Fundamentals",
+                description: "Master the basics of ML",
+                content: [
+                    "Supervised and unsupervised learning",
+                    "Feature engineering and selection",
+                    "Model evaluation and validation",
+                    "Popular ML algorithms (Decision Trees, SVM, KNN)"
+                ]
+            },
+            {
+                title: "Deep Learning",
+                description: "Dive into neural networks",
+                content: [
+                    "Neural Networks architecture",
+                    "Convolutional Neural Networks (CNN)",
+                    "Recurrent Neural Networks (RNN)",
+                    "Transfer Learning"
+                ]
+            },
+            {
+                title: "AI Frameworks and Tools",
+                description: "Learn essential AI tools",
+                content: [
+                    "TensorFlow and Keras",
+                    "PyTorch",
+                    "Scikit-learn",
+                    "OpenCV for computer vision"
+                ]
+            },
+            {
+                title: "Natural Language Processing",
+                description: "Understand and process human language",
+                content: [
+                    "Text preprocessing and tokenization",
+                    "Word embeddings (Word2Vec, GloVe)",
+                    "Sentiment analysis",
+                    "Language models and transformers (BERT, GPT)"
+                ]
+            },
+            {
+                title: "Big Data and Cloud Computing",
+                description: "Scale your AI solutions",
+                content: [
+                    "Hadoop and Spark",
+                    "Cloud platforms (AWS, Azure, Google Cloud)",
+                    "Distributed computing",
+                    "Data warehousing and ETL processes"
+                ]
+            },
+            {
+                title: "AI Ethics and Responsible AI",
+                description: "Develop ethical AI practices",
+                content: [
+                    "Bias and fairness in AI",
+                    "Privacy and security concerns",
+                    "Explainable AI (XAI)",
+                    "AI governance and regulations in India"
+                ]
+            },
+            {
+                title: "Industry Experience and Projects",
+                description: "Apply your skills in real-world scenarios",
+                content: [
+                    "Internships at AI companies or research labs",
+                    "Contribute to open-source AI projects",
+                    "Participate in AI hackathons and competitions",
+                    "Build a portfolio of AI projects"
+                ]
+            },
+            {
+                title: "Continuous Learning",
+                description: "Stay updated in the ever-evolving field of AI",
+                content: [
+                    "Stay updated with latest AI research papers",
+                    "Attend AI conferences and workshops",
+                    "Pursue advanced certifications (e.g., IIIT-H's Executive PG in ML & AI)",
+                    "Consider higher education (M.Tech or Ph.D. in AI)"
+                ]
+            }
+        ];
 
-            const animateProgressBar = () => {
-                progressBar.classList.add('animate');
-            };
+        let currentNode = 0;
+        const roadmapContainer = document.getElementById('roadmap');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const currentStepSpan = document.getElementById('currentStep');
+        const themeSwitch = document.querySelector('.theme-switch');
 
-            const animateRoadmapItems = () => {
-                roadmapItems.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.style.animation = `fadeInUp 0.5s ease-out ${index * 0.2}s forwards`;
-                    }, index * 200);
+        function createNode(data) {
+            const node = document.createElement('div');
+            node.className = 'node';
+            node.innerHTML = `
+                <h2>${data.title}</h2>
+                <p>${data.description}</p>
+                <ul>
+                    ${data.content.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+            `;
+            return node;
+        }
+
+        function updateNode() {
+            roadmapContainer.innerHTML = '';
+            const node = createNode(roadmapData[currentNode]);
+            roadmapContainer.appendChild(node);
+            setTimeout(() => {
+                node.classList.add('active');
+                node.querySelectorAll('li').forEach((li, index) => {
+                    setTimeout(() => li.style.opacity = 1, index * 100);
                 });
-            };
+            }, 50);
+            currentStepSpan.textContent = currentNode + 1;
+            prevBtn.disabled = currentNode === 0;
+            nextBtn.disabled = currentNode === roadmapData.length - 1;
+        }
 
-            const toggleTheme = () => {
-                document.body.classList.toggle('light-theme');
-                if (document.body.classList.contains('light-theme')) {
-                    themeIcon.classList.remove('fa-moon');
-                    themeIcon.classList.add('fa-sun');
-                } else {
-                    themeIcon.classList.remove('fa-sun');
-                    themeIcon.classList.add('fa-moon');
-                }
-            };
-
-            animateProgressBar();
-            animateRoadmapItems();
-
-            roadmapItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    item.classList.toggle('active');
-                });
-
-                // Touch events for mobile devices
-                item.addEventListener('touchstart', () => {
-                    item.style.transform = 'scale(0.98)';
-                });
-
-                item.addEventListener('touchend', () => {
-                    item.style.transform = '';
-                    item.classList.toggle('active');
-                });
-            });
-
-            themeSwitch.addEventListener('click', toggleTheme);
-
-            // Intersection Observer for roadmap items
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    } else {
-                        entry.target.classList.remove('active');
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            roadmapItems.forEach(item => observer.observe(item));
-
-            // Animate floating shapes on mousemove
-            document.addEventListener('mousemove', (e) => {
-                const mouseX = e.clientX / window.innerWidth;
-                const mouseY = e.clientY / window.innerHeight;
-
-                shapes.forEach(shape => {
-                    const shapeX = (mouseX - 0.5) * 20;
-                    const shapeY = (mouseY - 0.5) * 20;
-                    shape.style.transform = `translate(${shapeX}px, ${shapeY}px) rotate(${shapeX * shapeY}deg)`;
-                });
-            });
-
-            // Animate list items when roadmap item becomes active
-            roadmapItems.forEach(item => {
-                item.addEventListener('transitionend', (e) => {
-                    if (e.propertyName === 'max-height' && item.classList.contains('active')) {
-                        const listItems = item.querySelectorAll('li');
-                        listItems.forEach((li, index) => {
-                            setTimeout(() => {
-                                li.style.opacity = '1';
-                                li.style.transform = 'translateX(0)';
-                            }, index * 100);
-                        });
-                    }
-                });
-            });
+        prevBtn.addEventListener('click', () => {
+            if (currentNode > 0) {
+                currentNode--;
+                updateNode();
+            }
         });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentNode < roadmapData.length - 1) {
+                currentNode++;
+                updateNode();
+            }
+        });
+
+        themeSwitch.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+        });
+
+        updateNode();
     </script>
 </body>
 </html>

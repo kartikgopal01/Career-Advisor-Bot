@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CareerWise - AI-Powered Engineering Career Advisor</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Faculty+Glyphic&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Faculty+Glyphic&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -16,7 +19,6 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/styles.css') }}"
     />
-
   </head>
   <body class="dark-mode">
     <div id="loading" class="loading-screen">
@@ -63,98 +65,128 @@
             <img
               src="https://img.icons8.com/nolan/512/artificial-intelligence.png"
               alt="AI Career Guidance"
-            />
+          />
           </div>
         </section>
 
         <section id="careers" class="careers-section">
-          <h2>Popular Engineering Careers</h2>
+          <h2 class="section-title">Popular Engineering Careers</h2>
           <div class="careers-grid">
-            <div class="career-card">
-              <div class="career-icon">
-                <i class="fas fa-robot"></i>
+              <div class="career-card" data-aos="fade-up">
+                  <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="AI Engineer" class="career-image">
+                  <div class="career-content">
+                      <div class="career-icon">
+                          <i class="fas fa-robot"></i>
+                      </div>
+                      <h3>AI Engineer</h3>
+                      <p>Design and develop intelligent systems and machines</p>
+                      <ul class="career-skills">
+                          <li>Machine Learning</li>
+                          <li>Python</li>
+                          <li>Deep Learning</li>
+                      </ul>
+                      <a href="{{ url_for('static', filename='html/ai-engineer.html') }}">
+                          <button class="learn-more">Learn More</button>
+                      </a>
+                  </div>
               </div>
-              <h3>AI Engineer</h3>
-              <p>Design and develop intelligent systems and machines</p>
-              <ul class="career-skills">
-                <li>Machine Learning</li>
-                <li>Python</li>
-                <li>Deep Learning</li>
-              </ul>
-            <a href="{{ url_for('static', filename='html/ai-engineer.html') }}">  <button class="learn-more" >Learn More</button></a>
-            </div>
 
-            <div class="career-card">
-              <div class="career-icon">
-                <i class="fas fa-database"></i>
+              <div class="career-card" data-aos="fade-up" data-aos-delay="100">
+                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="Data Scientist" class="career-image">
+                  <div class="career-content">
+                      <div class="career-icon">
+                          <i class="fas fa-database"></i>
+                      </div>
+                      <h3>Data Scientist</h3>
+                      <p>Analyze and interpret complex data sets</p>
+                      <ul class="career-skills">
+                          <li>Statistics</li>
+                          <li>Python</li>
+                          <li>SQL</li>
+                      </ul>
+                      <a href="{{ url_for('static', filename='html/ds.html') }}">
+                          <button class="learn-more">Learn More</button>
+                      </a>
+                  </div>
               </div>
-              <h3>Data Scientist</h3>
-              <p>Analyze and interpret complex data sets</p>
-              <ul class="career-skills">
-                <li>Statistics</li>
-                <li>Python</li>
-                <li>SQL</li>
-              </ul>
-              <a href="{{ url_for('static', filename='html/ds.html') }}">  <button class="learn-more" >Learn More</button></a>
-            </div>
 
-            <div class="career-card">
-              <div class="career-icon">
-                <i class="fas fa-code"></i>
+              <div class="career-card" data-aos="fade-up" data-aos-delay="200">
+                  <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80" alt="Software Engineer" class="career-image">
+                  <div class="career-content">
+                      <div class="career-icon">
+                          <i class="fas fa-code"></i>
+                      </div>
+                      <h3>Software Engineer</h3>
+                      <p>Develop and maintain software applications</p>
+                      <ul class="career-skills">
+                          <li>JavaScript</li>
+                          <li>Python</li>
+                          <li>Java</li>
+                      </ul>
+                      <a href="{{ url_for('static', filename='html/software.html') }}">
+                          <button class="learn-more">Learn More</button>
+                      </a>
+                  </div>
               </div>
-              <h3>Software Engineer</h3>
-              <p>Develop and maintain software applications</p>
-              <ul class="career-skills">
-                <li>JavaScript</li>
-                <li>Python</li>
-                <li>Java</li>
-              </ul>
-              <a href="{{ url_for('static', filename='html/software.html') }}">  <button class="learn-more" >Learn More</button></a>
-            </div>
 
-            <div class="career-card">
-              <div class="career-icon">
-                <i class="fa-solid fa-laptop-code"></i>
+              <div class="career-card" data-aos="fade-up" data-aos-delay="300">
+                  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1744&q=80" alt="Fullstack Dev" class="career-image">
+                  <div class="career-content">
+                      <div class="career-icon">
+                          <i class="fa-solid fa-laptop-code"></i>
+                      </div>
+                      <h3>Fullstack Dev</h3>
+                      <p>Design and develop computer hardware and systems</p>
+                      <ul class="career-skills">
+                          <li>Web Technologies</li>
+                          <li>Frameworks</li>
+                          <li>Database</li>
+                      </ul>
+                      <a href="{{ url_for('static', filename='html/fullstack.html') }}">
+                          <button class="learn-more">Learn More</button>
+                      </a>
+                  </div>
               </div>
-              <h3>Fullstack Dev</h3>
-              <p>Design and develop computer hardware and systems</p>
-              <ul class="career-skills">
-                <li>Web Technologies</li>
-                <li>Frameworks</li>
-                <li>Database</li>
-              </ul>
-              <a href="{{ url_for('static', filename='html/fullstack.html') }}">  <button class="learn-more" >Learn More</button></a>
-            </div>
 
-            <div class="career-card">
-              <div class="career-icon">
-                <i class="fas fa-network-wired"></i>
+              <div class="career-card" data-aos="fade-up" data-aos-delay="400">
+                  <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1734&q=80" alt="Network Engineer" class="career-image">
+                  <div class="career-content">
+                      <div class="career-icon">
+                          <i class="fas fa-network-wired"></i>
+                      </div>
+                      <h3>Network Engineer</h3>
+                      <p>Design, implement, and maintain computer networks</p>
+                      <ul class="career-skills">
+                          <li>Networking Protocols</li>
+                          <li>Cisco Systems</li>
+                          <li>Network Security</li>
+                      </ul>
+                      <a href="{{ url_for('static', filename='html/network.html') }}">
+                          <button class="learn-more">Learn More</button>
+                      </a>
+                  </div>
               </div>
-              <h3>Network Engineer</h3>
-              <p>Design, implement, and maintain computer networks</p>
-              <ul class="career-skills">
-                <li>Networking Protocols</li>
-                <li>Cisco Systems</li>
-                <li>Network Security</li>
-              </ul>
-              <a href="{{ url_for('static', filename='html/network.html') }}">  <button class="learn-more" >Learn More</button></a>
-            </div>
 
-            <div class="career-card">
-              <div class="career-icon">
-                <i class="fas fa-cloud"></i>
+              <div class="career-card" data-aos="fade-up" data-aos-delay="500">
+                  <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1744&q=80" alt="Cloud Engineer" class="career-image">
+                  <div class="career-content">
+                      <div class="career-icon">
+                          <i class="fas fa-cloud"></i>
+                      </div>
+                      <h3>Cloud Engineer</h3>
+                      <p>Design and manage cloud computing systems</p>
+                      <ul class="career-skills">
+                          <li>AWS</li>
+                          <li>Azure</li>
+                          <li>Docker</li>
+                      </ul>
+                      <a href="{{ url_for('static', filename='html/cloud.html') }}">
+                          <button class="learn-more">Learn More</button>
+                      </a>
+                  </div>
               </div>
-              <h3>Cloud Engineer</h3>
-              <p>Design and manage cloud computing systems</p>
-              <ul class="career-skills">
-                <li>AWS</li>
-                <li>Azure</li>
-                <li>Docker</li>
-              </ul>
-              <a href="{{ url_for('static', filename='html/cloud.html') }}">  <button class="learn-more" >Learn More</button></a>
-            </div>
           </div>
-        </section>
+      </section>
       </main>
 
       <div id="chat-widget" class="chat-widget">
@@ -192,9 +224,16 @@
             </div>
             <h3>Kartik Gopal</h3>
             <div class="social-links">
-              <a href="https://github.com/kartikgopal01"><i class="fab fa-github"></i></a>
-              <a href="https://www.linkedin.com/in/kartik-gopal-4552452a1/"><i class="fab fa-linkedin"></i></a>
-              <a href="https://www.instagram.com/_kartik_gopal_/?igsh=bHViaTgyN2syNTRy"><i class="fab fa-instagram"></i></a>
+              <a href="https://github.com/kartikgopal01"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a href="https://www.linkedin.com/in/kartik-gopal-4552452a1/"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/_kartik_gopal_/?igsh=bHViaTgyN2syNTRy"
+                ><i class="fab fa-instagram"></i
+              ></a>
             </div>
           </div>
 
@@ -206,7 +245,7 @@
               />
             </div>
             <h3>Prerana Raykar</h3>
-            
+
             <div class="social-links">
               <a href="#"><i class="fab fa-github"></i></a>
               <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -232,7 +271,7 @@
           <div class="team-member">
             <div class="member-image">
               <img
-                src="{{ url_for('static', filename='img/prathamesh.jpg') }}"
+                src="https://img.icons8.com/nolan/64/user-default.png"
                 alt="Team Member 4"
               />
             </div>
@@ -244,9 +283,19 @@
             </div>
           </div>
         </div>
+       
       </section>
 
-      <!-- Replace the existing profile modal in index.html with this updated version -->
+     
+      <footer class="footer">
+        <p>&copy; 2023 CareerWise. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </footer>
+
       <div id="profile-modal" class="modal">
         <div class="modal-content">
           <div class="modal-header">

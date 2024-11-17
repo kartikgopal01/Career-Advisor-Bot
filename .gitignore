@@ -1,1 +1,5 @@
 /venv
+/Scripts
+/Lib
+/share
+/include
